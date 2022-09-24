@@ -90,7 +90,7 @@ internal class Interpreter
         if (loopIndexStack.Any())
         {
             throw new InvalidProgramException(
-                $"Loop starting brace(s) '[' without corresponding closing brace(s) found at positions {string.Join(", ", loopIndexStack)}.");
+                $"Loop starting brace(s) '[' without corresponding closing brace(s) found at position(s) {string.Join(", ", loopIndexStack)}.");
         }
     }
 
