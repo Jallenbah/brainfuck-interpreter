@@ -2,30 +2,29 @@
 {
     static void Main(string[] args)
     {
-        // hello world with a wait for key press on the end
-        var testStr = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.,";
-        
-        //if (args.Length == 0)
-        //{
-        //    Console.WriteLine("No code specified. Supply the brainfuck code as the sole command line parameter to run it.");
-        //    return;
-        //}
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Invalid command line arguments. Supply the brainfuck code as the sole command line parameter to run it.");
+            return;
+        }
+
+        var code = string.Join(string.Empty, args);
 
         try
         {
-            Brainfuck.Interpreter.Execute(testStr);
+            Brainfuck.Interpreter.Execute(code);
         }
         catch (Brainfuck.InvalidProgramException ex)
         {
             Console.WriteLine(
-                $"The specified program code is invalid:\n" +
+                $"\nThe specified program code is invalid:\n" +
                 $"{ex.Message}");
             Console.ReadKey();
         }
         catch (Exception ex)
         {
             Console.WriteLine(
-                $"An unexpected error occurred:\n" +
+                $"\nAn unexpected error occurred:\n" +
                 $"Message: {ex.Message}\n" +
                 $"Stack trace: {ex.StackTrace}");
             Console.ReadKey();
